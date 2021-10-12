@@ -303,6 +303,7 @@ edit_buttons = {
     "peso":  InlineKeyboardButton('Editar Peso', callback_data='e^pe'),
     "creador": InlineKeyboardButton('Editar Creador', callback_data='e^cr'),
     "sis_j": InlineKeyboardButton('Editar Sis de Juego', callback_data='e^sj'),
+    "year": InlineKeyboardButton('Editar Año', callback_data='e^y'),
     "hidden_name": InlineKeyboardButton('Hacer post anónimo', callback_data='e^anonymity'),
 }
 
@@ -351,8 +352,8 @@ def markup_e1():
 
     # markup.row(edit_buttons["hidden_name"])
 
-    markup.row(InlineKeyboardButton(icono(
-        ':heavy_plus_sign: Más Categorías :heavy_plus_sign:'), callback_data='m^1'))
+    markup.row(edit_buttons["year"],
+               InlineKeyboardButton(icono(':heavy_plus_sign: Más Categorías :heavy_plus_sign:'), callback_data='m^1'))
 
     markup.row(InlineKeyboardButton(salir_menu, callback_data='s'),
                InlineKeyboardButton(boton_sigui, callback_data='e^c'.format()))
@@ -430,6 +431,8 @@ def editar(message: Message, t: str, temp: Temp):
                     _temp.post.creador = var
                 elif t == 'sj':
                     _temp.post.sis_j = var
+                elif t == 'y':
+                    _temp.post.year = var
                 elif t == 'im':
                     _temp.post.imagen = None
                 elif t == 'anonymity':
